@@ -37,7 +37,7 @@ class PriceMachine():
                     reader = csv.DictReader(file)
                     for row in reader:
                         product, price, weight = self.search_product_price_weight(row.keys())
-                        if product and price and weight:
+                        if all(len(p)!=0 for p in (product, price, weight)):
                             product_name = row[product[0]]
                             price = row[price[0]]
                             weight = row[weight[0]]
